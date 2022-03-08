@@ -14,7 +14,7 @@ def get_chrome_cookie(url):
     """
     domain = '.' + tldextract.extract(url).registered_domain
 
-    chrome = browsercookie.Chrome()
+    chrome = browsercookie.Firefox()
     cookies = []
     try:
         for item in chrome.get_cookies():

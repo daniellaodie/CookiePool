@@ -181,4 +181,5 @@ if __name__ == "__main__":
         template_path="template"
     )
     app.listen(8016)
+    print("web 服务启动：8016")
     tornado.ioloop.IOLoop.current().start()

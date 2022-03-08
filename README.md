@@ -1,6 +1,47 @@
 # Cookie-Pool
 一个强大的Cookie池项目，超乎你的想象
 
+## 自测
+1. 确定使用ff来实现
+2. graphql如何使用
+3. 继续使用ff浏览器调试程序，猜想selenium和多cookie结合使用
+
+
+#### 确定使用ff
+browsercookie firefox 获取 bitbucket 的cookie成功，但是chrome无法成功，使用ff来做后续实现。
+只能获取存在本地的cookie，无法获取session类型的cookie。
+通过本地的cookie，fb是可以登录和搜索的，还需要进一步研究。
+存储baidu的cookie成功，使用baidu的cookie可以成功获取用户名。
+存储facebook的cookie成功，使用cookie不能登录成功获取用户名（selenium和requests都试过了）
+
+
+#### 两种技术方案
+1. cookie池，这种可以高效利用多用户切换
+2. docker 多容器，也可以实现多个账户切换
+3. 两者最后可以融合效率更高，速度更快，对抗反爬效果更好
+
+#### cookie池难度
+1. 目前存储的cookie不能登录fb，直接运行的可以登录
+2. 需要模拟登录，初始化获取cookie
+3. cookie失效后如何处理，或者保证有效期内访问多次，怕封号
+4. 需要程序控制很精细
+
+#### docker
+1. 使用selenium + headless chrome 模拟登录，账户名和密码写死，登录无问题，不需要cookie操作
+2. 目前看来比较容易实现
+
+
+#### selenium 实现fb用户登录
+1. 自动登录完成，试一下headless chrome可以不
+2. 已经可以搜索抓到列表内容，看一下接下来怎么落库的策略
+
+#### 落库策略
+因为每个帐号扫描的条目都不同，如果无脑爬取会有很多重复数据，建立article表存储搜索的条目，防止重复获取
+
+
+
+
+
 ## 1 综述
 随着大型网站反扒机制的增强，使用cookie登陆已经成为一种最高效的方式，为此打造一款超强cookie池项目<p>
 基于tornado网络框架，综合了<B>selenium、requests、Session、scrapy、cookie字符串、浏览器cookie</B><p>

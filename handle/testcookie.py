@@ -3,12 +3,12 @@ import requests
 from selenium import webdriver
 from db.peeweetools import Cookies
 from selenium.webdriver.chrome.options import Options
-from setting import CHORME
+from setting import CHROME
 
 
 class TestCookie:
     def __init__(self):
-        add_argument = CHORME['add_argument']
+        add_argument = CHROME['add_argument']
         chrome_options = Options()
         [chrome_options.add_argument(i) for i in add_argument]
         self.driver = webdriver.Chrome(chrome_options=chrome_options)
